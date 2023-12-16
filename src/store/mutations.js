@@ -18,6 +18,10 @@ export  function setBooksById(state,books)
     state.booksById = books
 }
 
+export  function setNewsBooks(state,books)
+{
+    state.NewsBooks = books
+}
 export  function setBooksByAuthors(state,books)
 {
     state.booksByAuthor = books

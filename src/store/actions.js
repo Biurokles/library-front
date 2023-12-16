@@ -33,6 +33,14 @@ export function searchBooksById({commit },id ){
     })
 }
 
+export function searchNewsBooks({commit } ){
+    axiosClient.get('book/news?count=10')
+    .then(({data})=>{
+        commit('setNewsBooks', data)
+    })
+
+}
+
 export function searchBooksByAuthor({commit }, author){
     axiosClient.get(`book?AuthorId=${author}`)
     .then(({data})=>{

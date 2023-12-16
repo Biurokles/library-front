@@ -3,8 +3,8 @@ export default{
     categories: [],
     booksByCategory: [],
     booksByAuthor: [],
-    booksById: [],
+    booksById: {},
     roles: [],
-
+    NewsBooks: [],
     usersData: [],
 }
