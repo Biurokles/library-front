@@ -5,7 +5,12 @@ export function searchBooks({commit },searchInfo){
     .then(({data})=>{
         commit('setSearchedBooks', data)
     })
+    axiosClient.get(`/book?SearchBy=${searchInfo.searchBy}&Value=${searchInfo.keyword}`)
+    .then(({data})=>{
+        commit('setSearchedBooks', data)
+    })
 }
+
 
 export function searchCategories({commit}){
     axiosClient.get('category/getTree')

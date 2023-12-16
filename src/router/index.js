@@ -7,11 +7,11 @@ import Register from '../views/Register.vue'
 import BooksByAuthor from '../views/BooksByAuthor.vue'
 import Authors from '../views/Authors.vue'
 import BooksByCategories from '../views/BooksByCategories.vue'
+import Categories from '../views/Categories.vue'
 import BooksByName from '../views/BooksByName.vue' 
 import BookDetails from '../views/BookDetails.vue'
 import ShoppingCart from '../views/ShoppingCart.vue'
 import AdminPanel from '../views/AdminPanel.vue'
-import Categories from '../views/Categories.vue'
 
 
 
@@ -41,7 +41,12 @@ const routes = [
                 component: BooksByAuthor
             },
             {
-                path: '/by-Category/:category?',
+                path: '/categories',
+                name: 'categories',
+                component: Categories,
+            },
+            {
+                path: '/by-Category/:category',
                 name: 'byCategory',
                 component: BooksByCategories,
             },
