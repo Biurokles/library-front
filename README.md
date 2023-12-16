@@ -9,9 +9,11 @@ This template should help get you started developing with Vue 3 in Vite. The tem
 
 ### TODO LIST:
 - Rejestracja (request do api o stworzenie konta z danymi z formularza)
+  <!-- po rejestracji przekierowani zostaniemy na stronę logowania -->
 - Logowanie się (po wpisaniu maila/loginu i hasła, najlepiej żeby zapisywało się w localStorage token)
+<!--  po zalogowaniu przekierowanie na stronę główną localStorage['token'] = zwrócony token przez logowanie -->
 - Poprawienie styli kategorii w Categories.vue
-- Dorobienie widoku który będzie pokazywał użytkownikowi wyświetlić jego wypożyczone książki i pozwoli na zarządzanie nimi
+- Dorobienie widoku który będzie pokazywał użytkownikowi wyświetlić jego wypożyczone książki i pozwoli na zarządzanie nimi  
 - Dorobienie widoku dla admina który będzie akceptował (lub nie) wypożyczyć książke użytkownikowi, po tym jak będzie chciał ją wypożyczyć
 - W ShoppingCart.vue znajduje się przycisk odpowiedzialny za request do bazy o prośbę o wypożyczenie książek które znajdują się w koszyku
 - W BookItem.vue znajduje się kod który sprawdza czy dana książka znajduje się w koszyku. Jednak sprawdza tylko LocalStorage. Trzeba zaktualizować to żeby także sprawdzało bazkę i w razie czego aktualizowało

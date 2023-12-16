@@ -2,7 +2,7 @@
    <div class="flex justify-center items-center mt-44">
     <div class="w-full max-w-xs">
       <h1 class="text-4xl font-bold mb-4 dark:text-white">Log in</h1>
-      <form class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+      <form @submit.prevent="checkForm" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" >
         <div class="identity-input mb-4">
           <label
             for="identity"
@@ -60,8 +60,44 @@
   </div>
 </template>
 
-<script setup>
-import { RouterLink } from 'vue-router';
+<script >
+import axiosClient from '../axiosClient';
 
-
+export default{
+  name: 'loginPage',
+  data() {
+    return {
+      email:'',
+      password:''
+    }; 
+  },
+  methods:{
+    checkForm(){
+      if(this.email && this.password){
+        const user_data = {
+          email:  this.email,
+          password: this.password
+        }
+        // console.log(user_data)
+        axiosClient.post('auth/login', user_data)
+        .then(repsonse => {
+          let tk = repsonse.data['token'];
+          if(tk){
+            localStorage.setItem('token',repsonse.data['token']);
+            alert("Succesfull login!");
+            this.$router.push({path: '/'})  
+            return true;
+          }else{
+            alert("Incorrect login details");
+            return false
+          }
+        }).catch (error =>{
+          console.log(error);
+          return false
+        })
+      }
+      return false;
+    }
+  }
+}
 </script>

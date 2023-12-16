@@ -1,8 +1,8 @@
 <template>
     <Books :books="books"/>
-    </template>
+</template>
     
-    <script setup>
+<script setup>
     import {computed} from '@vue/reactivity'
     import {onMounted, ref } from "vue";
     import { useRoute } from "vue-router";
@@ -14,4 +14,4 @@
     onMounted(()=>{
         store.dispatch('searchBooksByCategory', route.params.category)
     })
-    </script>
+</script>

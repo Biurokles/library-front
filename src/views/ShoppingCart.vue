@@ -23,33 +23,15 @@
                               <div class="flex justify-between space-x-8 items-start w-full">
                                   <p class="text-base dark:text-white xl:text-lg leading-6"></p>
                                   <button  @click=" deleteFromCart(book) " class=" text-black dark:text-white font-bold py-2 px-4 rounded">
-                          <i class="pi pi-times" ></i>
+                                    <i class="pi pi-times" ></i>
                            </button>
                               </div>
                           </div>
                       </div>
                   </div>
-                  <div class="flex justify-center flex-col md:flex-row flex-col items-stretch w-full space-y-4 md:space-y-0 md:space-x-6 xl:space-x-8">
-                      <div class="flex flex-col px-4 py-6 md:p-6 xl:p-8 w-full bg-gray-50 dark:bg-gray-900 space-y-6">
-                          <h3 class="text-xl dark:text-white font-semibold leading-5 text-gray-800">Summary</h3>
-                          <div class="flex justify-center items-center w-full space-y-4 flex-col border-gray-200 border-b pb-4">
-                              <div class="flex justify-between w-full">
-                                  <p class="text-base dark:text-white leading-4 text-gray-800">Subtotal</p>
-                                  <p class="text-base dark:text-gray-300 leading-4 text-gray-600">$56.00</p>
-                              </div>
-                              <div class="flex justify-between items-center w-full">
-                                  <p class="text-base dark:text-white leading-4 text-gray-800">Shipping</p>
-                                  <p class="text-base dark:text-gray-300 leading-4 text-gray-600">$8.00</p>
-                              </div>
-                          </div>
-                          <div class="flex justify-between items-center w-full">
-                              <p class="text-base dark:text-white font-semibold leading-4 text-gray-800">Total</p>
-                              <p class="text-base dark:text-gray-300 font-semibold leading-4 text-gray-600">$36.00</p>
-                          </div>
-                      </div>
 
-                  </div>
               </div>
+              <!-- user info -->
               <div class="bg-gray-50 dark:bg-gray-900 w-full xl:w-96 flex justify-between items-center md:items-start px-4 py-6 md:p-6 xl:p-8 flex-col">
                   <h3 class="text-xl dark:text-white font-semibold leading-5 text-gray-800">Customer</h3>
                   <div class="flex flex-col md:flex-row xl:flex-col justify-start items-stretch h-full w-full md:space-x-6 lg:space-x-8 xl:space-x-0">
@@ -82,6 +64,9 @@
                           <div class="flex w-full justify-center items-center md:justify-start md:items-start">
                               <button class="mt-6 md:mt-0 dark:border-white dark:hover:bg-gray-900 dark:bg-transparent dark:text-white py-5 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 border border-gray-800 font-medium w-96 2xl:w-full text-base font-medium leading-4 text-gray-800">Edit Details</button>
                           </div>
+                          <div class="flex w-full justify-center items-center md:justify-start md:items-start">
+                              <button v-on:click="borrowRequest" class="mt-6 md:mt-0 dark:border-white dark:hover:bg-gray-900 dark:bg-transparent dark:text-white py-5 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 border border-gray-800 font-medium w-96 2xl:w-full text-base font-medium leading-4 text-gray-800">Borrow books</button>
+                          </div>
                       </div>
                   </div>
               </div>
@@ -102,6 +87,10 @@ data() {
   };
 },
 methods: {
+  borrowRequest()
+{
+    console.log('nigger');
+},
   deleteFromCart(item)
 {
   var cart = JSON.parse(localStorage.getItem('products')) || [];
