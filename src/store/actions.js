@@ -1,13 +1,12 @@
 import axiosClient from "../axiosClient";
 
 export function searchBooks({commit },searchInfo){
-   
-        axiosClient.get(`/book?SearchBy=${searchInfo.searchBy}&Value=${searchInfo.keyword}`)
-        .then(({data})=>{
-            commit('setSearchedBooks', data)
-        })
-        
+    axiosClient.get(`/book?SearchBy=${searchInfo.searchBy}&Value=${searchInfo.keyword}`)
+    .then(({data})=>{
+        commit('setSearchedBooks', data)
+    })
 }
+
 export function searchCategories({commit}){
     axiosClient.get(`category/getTree`)
     .then(({data})=>{
