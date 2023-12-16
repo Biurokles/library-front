@@ -62,6 +62,7 @@
 
 <script >
 import axiosClient from '../axiosClient';
+import store from '../store';
 
 export default{
   name: 'loginPage',
@@ -84,6 +85,7 @@ export default{
           let tk = repsonse.data['token'];
           if(tk){
             localStorage.setItem('token',repsonse.data['token']);
+            store.commit('setUserRoles', tk);
             alert("Succesfull login!");
             this.$router.push({path: '/'})  
             return true;
