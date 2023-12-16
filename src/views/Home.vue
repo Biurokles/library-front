@@ -15,11 +15,5 @@
 
 
 
-    const ingredients = ref([])
-    
-    onMounted(async()=>{
-   // const response = await axiosClient.get('/list.php?i=list')
-        console.log(response.data)
-        ingredients.value = response.data
-    })
+
 </script>
