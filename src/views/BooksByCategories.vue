@@ -3,6 +3,7 @@
         <div v-for="category in categories" v-bind:key="category">
             <Categories :categories="category"></Categories>
         </div>
+        <Books :books="books"/>
     </div>
     <Footer></Footer>
 </template>
@@ -19,9 +20,9 @@
     const route =useRoute();
     const categories = computed(()=>store.state.categories);
     store.dispatch('searchCategories');
-    console.log(categories)
+    console.log(categories);
     
     watch(route,()=>{
-        store.dispatch('searchBooksByLetter',route.params.letter)
+        store.dispatch('searchBooksByCategory',route.params.letter)
     })
 </script>
