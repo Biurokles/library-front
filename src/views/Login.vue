@@ -4,12 +4,11 @@
       <h1 class="text-4xl font-bold mb-4 dark:text-white">Log in</h1>
       <form @submit.prevent="checkForm" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" >
         <div class="identity-input mb-4">
-          <label
-            for="identity"
+          <label for="identity"
             class="block text-gray-700 text-sm font-bold mb-2"
           >
-            Email</label
-          >
+            Email
+          </label>
           <input
             id="identity"
             class="shadow appearance-none borderrounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
@@ -25,8 +24,7 @@
           <label
             for="identity"
             class="block text-gray-700 text-sm font-bold mb-2"
-            >Password</label
-          >
+            >Password</label>
 
           <input
             aria-describedby="passwordHelp"
@@ -50,7 +48,7 @@
           </button>
           <RouterLink
             class="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800"
-          :to="{name:'register'}"
+            :to="{name:'register'}"
           >
             Register
           </RouterLink>

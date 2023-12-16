@@ -16,3 +16,4 @@
         store.dispatch('searchBooksByCategory', route.params.category)
     })
 </script>
+

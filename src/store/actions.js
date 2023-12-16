@@ -15,19 +15,17 @@ export function searchCategories({commit}){
 }
 
 export function searchBooksByCategory({commit },category ){
-   
     axiosClient.get(`book?CategoryId=${category}`)
     .then(({data})=>{
         commit('setBooksByCategory', data)
     })
-    
 }
+
 export function searchBooksByAuthor({commit }, ing){
     axiosClient.get(`filter.php?i=${ing}`)
     .then(({data})=>{
         commit('setBooksByAuthors', data)
-    })
-    
+    })   
 }
 
 export function getUsersData({commit}){
