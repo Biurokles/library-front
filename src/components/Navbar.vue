@@ -1,5 +1,5 @@
 <template>
-        <header class="bg-white dark:text-white dark:bg-gray-700  text-black shadow h-24 flex justify-between items-stretch">
+  <header class="bg-white dark:text-white dark:bg-gray-700  text-black shadow h-24 flex justify-between items-stretch">
     <router-link :to="{name:'home'}" class="inline-flex items-center h-full px-5">
       Home
     </router-link>
@@ -38,19 +38,18 @@
   </div>
 </header>
 </template>
+
 <script setup> 
 import {useDark, useToggle} from "@vueuse/core";
 import 'primeicons/primeicons.css';
 import store from "../store";
 
-const isDark = useDark();
-const toggleDark = useToggle(isDark);
+  const isDark = useDark();
+  const toggleDark = useToggle(isDark);
 
-const isLogged = localStorage.getItem('token')==undefined ? false:true;
-const logout =  function () {
-  localStorage.removeItem('token');
-  location.reload();
-}
-
-
+  const isLogged = localStorage.getItem('token')==undefined ? false:true;
+  const logout =  function () {
+    localStorage.removeItem('token');
+    location.reload();
+  }
 </script>

@@ -1,19 +1,21 @@
 export  function setSearchedBooks(state,books)
 {
-state.searchedBooks = books
+    state.searchedBooks = books
 }
 
 export  function setCategories(state,category)
 {
-state.categories = category
+    state.categories = category
 }
+
 export  function setBooksByLetter(state,books)
 {
-state.booksByLetter = books
+    state.booksByLetter = books
 }
+
 export  function setBooksByAuthors(state,books)
 {
-state.booksByAuthor = books
+    state.booksByAuthor = books
 }
 
 export function setUserRoles(state, token)

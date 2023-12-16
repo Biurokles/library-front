@@ -1,5 +1,5 @@
 <template>
-<router-view/>
+    <router-view/>
 </template>
 
 <script setup>
@@ -12,6 +12,7 @@
     {
         store.commit('setUserRoles', token);
     }
+
 </script>
 
 <style scoped>
