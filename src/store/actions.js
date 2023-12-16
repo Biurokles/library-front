@@ -8,21 +8,28 @@ export function searchBooks({commit },searchInfo){
 }
 
 export function searchCategories({commit}){
-    axiosClient.get(`category/getTree`)
+    axiosClient.get('category/getTree')
     .then(({data})=>{
         commit('setCategories', data)
     })
 }
 
-export function searchBooksByLetter({commit }, ){
-    axiosClient.get(`search.php?f=${letter}`)
+export function searchBooksByCategory({commit },category ){
+    axiosClient.get(`book?CategoryId=${category}`)
     .then(({data})=>{
-        commit('setBooksByLetter', data)
+        commit('setBooksByCategory', data)
     })
 }
 
-export function searchBooksByAuthor({commit }, ing){
-    axiosClient.get(`filter.php?i=${ing}`)
+export function searchBooksById({commit },id ){
+    axiosClient.get(`book/${id}`)
+    .then(({data})=>{
+        commit('setBooksById', data)
+    })
+}
+
+export function searchBooksByAuthor({commit }, author){
+    axiosClient.get(`book?AuthorId=${author}`)
     .then(({data})=>{
         commit('setBooksByAuthors', data)
     })   

@@ -1,13 +1,13 @@
 <template>
     <div class="max-w-[800px] mx-auto p-8">
         <h1 class="text-5xl font-bold mb-5">{{ book.title }}</h1>
-        <img :src="book.strMealThumb" :alt="book.StrMeal" class="w-full">
+        <img         :src="book.coverUrl.slice(5)" :alt="book.title"  class="w-full">
         <div class="grid grid-cols-1 sm:grid-cols-3 text-lg py-2">
             <div>
-                <strong class="font-bold"> Category:</strong> {{ book.strCategory }}
+                <strong class="font-bold"> ISBN Number:</strong> {{ book.isbn }}
             </div>
             <div>
-                <strong class="font-bold"> Area:</strong> {{ book.strArea }}
+                <strong class="font-bold"> Quantity:</strong> {{ book.quantity }}
             </div>
             <div>
                 <strong class="font-bold"> Tags:</strong> {{ book.strTags }}
@@ -52,17 +52,13 @@
     import YouTubeButton from '../components/YouTubeButton.vue'
     import {onMounted, ref} from 'vue'
     import { useRoute } from 'vue-router'
-    import axiosClient from '../axiosClient'
-    
-    const book = ref({})
-    const route = useRoute()
-
+    import {computed} from '@vue/reactivity';
+    import store from '../store';
+    const book = computed(()=>store.state.booksById);
+    const route = useRoute();
+    console.log(route.params.id);
     onMounted(()=>
     {
-        axiosClient(`lookup.php?i=${route.params.id}`)
-        .then(({data})=>
-        {
-            book.value = data.books[0] || {}
-        })
+        store.dispatch('searchBooksById',route.params.id);
     })
 </script>

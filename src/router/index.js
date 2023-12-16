@@ -11,6 +11,7 @@ import BooksByName from '../views/BooksByName.vue'
 import BookDetails from '../views/BookDetails.vue'
 import ShoppingCart from '../views/ShoppingCart.vue'
 import AdminPanel from '../views/AdminPanel.vue'
+import Categories from '../views/Categories.vue'
 
 
 
@@ -43,6 +44,11 @@ const routes = [
                 path: '/by-Category/:category?',
                 name: 'byCategory',
                 component: BooksByCategories,
+            },
+            {
+                path: '/categories',
+                name: 'categories',
+                component: Categories,
             },
             {
                 path: '/book/:id',
