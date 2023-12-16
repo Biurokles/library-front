@@ -21,10 +21,10 @@
                                   </div>
                               </div>
                               <div class="flex justify-between space-x-8 items-start w-full">
-                                  <p class="text-base dark:text-white xl:text-lg leading-6"></p>
-                                  <button  @click=" deleteFromCart(book) " class=" text-black dark:text-white font-bold py-2 px-4 rounded">
-                                    <i class="pi pi-times" ></i>
-                           </button>
+                                    <p class="text-base dark:text-white xl:text-lg leading-6"></p>
+                                    <button  @click=" deleteFromCart(book) " class=" text-black dark:text-white font-bold py-2 px-4 rounded">
+                                        <i class="pi pi-times" ></i>
+                                    </button>
                               </div>
                           </div>
                       </div>
@@ -75,40 +75,38 @@
 </template>
 
 <script >
-import { toast } from 'vue3-toastify';
-import 'vue3-toastify/dist/index.css';
-export default {
-  
-
-data() {
-  return {
-      products: JSON.parse(localStorage.getItem('products')),
-      today: this.day()
-  };
-},
-methods: {
-  borrowRequest()
-{
-    console.log('nigger');
-},
-  deleteFromCart(item)
-{
-  var cart = JSON.parse(localStorage.getItem('products')) || [];
-  var index = cart.findIndex(x => x.title === item.title);
-      cart.splice(index, 1);
-      localStorage.setItem('products', JSON.stringify(cart));
-      this.products = JSON.parse(localStorage.getItem('products'));
-      console.log(localStorage.products)
-      toast.info(item.title + ' deleted from cart');
-},
-  day()
-  {
-      var today = new Date();
-      var dd = String(today.getDate()).padStart(2, '0');
-      var mm = String(today.getMonth() + 1).padStart(2, '0'); 
-      var yyyy = today.getFullYear();
-      today = mm + '/' + dd + '/' + yyyy;
+  import { toast } from 'vue3-toastify';
+  import 'vue3-toastify/dist/index.css';
+  export default {
+    data() {
+        return {
+        products: JSON.parse(localStorage.getItem('products')),
+        today: this.day()
+        };
+    },
+    methods: {
+        borrowRequest()
+        {
+        console.log('nigger');
+        },
+        deleteFromCart(item)
+        {
+        var cart = JSON.parse(localStorage.getItem('products')) || [];
+        var index = cart.findIndex(x => x.title === item.title);
+        cart.splice(index, 1);
+        localStorage.setItem('products', JSON.stringify(cart));
+        this.products = JSON.parse(localStorage.getItem('products'));
+        console.log(localStorage.products)
+        toast.info(item.title + ' deleted from cart');
+        },
+        day()
+        {
+            var today = new Date();
+            var dd = String(today.getDate()).padStart(2, '0');
+            var mm = String(today.getMonth() + 1).padStart(2, '0'); 
+            var yyyy = today.getFullYear();
+            today = mm + '/' + dd + '/' + yyyy;
+        }
+    }
   }
-}
-}
 </script>
