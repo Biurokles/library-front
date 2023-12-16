@@ -30,5 +30,12 @@ export function searchBooksByAuthor({commit }, ing){
     
 }
 
+export function getUsersData({commit}){
+    axiosClient.get(`employee/getUsersData`)
+    .then(({data})=>{
+        commit('setUsersData', data);
+    })
+}
+
 
 
