@@ -1,4 +1,5 @@
 import axiosClient from "../axiosClient";
+import store from "../store"
 
 export function searchBooks({commit },searchInfo){
     axiosClient.get(`/book?SearchBy=${searchInfo.searchBy}&Value=${searchInfo.keyword}`)
@@ -53,6 +54,17 @@ export function getUsersData({commit}){
     .then(({data})=>{
         commit('setUsersData', data);
     })
+}
+
+
+export function changeUserRole({commit}, {isGrant, usersId, role}){
+    isGrant
+    ? axiosClient.post(`admin/userRoles`, {usersId, role})
+        .then(({data}) => store.dispatch('getUsersData')
+        )
+    : axiosClient.delete(`admin/userRoles`, {data: {usersId, role}})
+    .then(({data}) => store.dispatch('getUsersData')
+    )
 }
 
 
