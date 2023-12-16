@@ -2,5 +2,6 @@ export default{
     searchedBooks: [],
     categories: [],
     booksByLetter: [],
-    booksByAuthor: []
+    booksByAuthor: [],
+    roles: [],
 }
