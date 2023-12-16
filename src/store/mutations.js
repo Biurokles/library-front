@@ -15,3 +15,8 @@ export  function setBooksByAuthors(state,books)
 {
 state.booksByAuthor = books
 }
+
+export function setUserRoles(state, token)
+{
+    state.roles = JSON.parse(window.atob(token.split('.')[1]))["http://schemas.microsoft.com/ws/2008/06/identity/claims/role"];
+}
