@@ -7,9 +7,9 @@ export  function setCategories(state,category)
 {
 state.categories = category
 }
-export  function setBooksByLetter(state,books)
+export  function setBooksByCategory(state,books)
 {
-state.booksByLetter = books
+state.booksByCategory = books
 }
 export  function setBooksByAuthors(state,books)
 {

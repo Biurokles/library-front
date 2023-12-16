@@ -15,11 +15,11 @@ export function searchCategories({commit}){
     })
 }
 
-export function searchBooksByLetter({commit }, ){
+export function searchBooksByCategory({commit },category ){
    
-    axiosClient.get(`search.php?f=${letter}`)
+    axiosClient.get(`book?CategoryId=${category}`)
     .then(({data})=>{
-        commit('setBooksByLetter', data)
+        commit('setBooksByCategory', data)
     })
     
 }

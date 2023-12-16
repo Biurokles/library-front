@@ -10,8 +10,8 @@ import store from "../store";
 import Books from '../components/Books.vue'
 const route = useRoute();
 const books = computed(()=> store.state.booksByAuthor)
-
+const info = {searchBy:'Author', keyword: route.params.author}
 onMounted(()=>{
-    store.dispatch('searchBooksByAuthor', route.params.author)
+    store.dispatch('searchBooks', info)
 })
 </script>

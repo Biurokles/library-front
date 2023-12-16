@@ -19,6 +19,7 @@
 </template>
 
 <script setup>
+import Books from '../components/Books.vue'
 import {computed} from '@vue/reactivity'
 import{onMounted, ref} from 'vue';
 import {useRoute} from 'vue-router';

@@ -1,6 +1,6 @@
 export default{
     searchedBooks: [],
     categories: [],
-    booksByLetter: [],
+    booksByCategory: [],
     booksByAuthor: []
 }

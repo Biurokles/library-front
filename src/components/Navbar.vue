@@ -17,7 +17,7 @@
 
       <i class="pi pi-search pr-2"></i>Search Books
     </router-link>
-    <router-link :to="{name:'byCategory'}" class="inline-flex items-center px-2 h-full transition-colors hover:bg-purple-200 dark:hover:bg-purple-700">
+    <router-link :to="{name:'categories'}" class="inline-flex items-center px-2 h-full transition-colors hover:bg-purple-200 dark:hover:bg-purple-700">
       Book by Category
     </router-link>
     <router-link :to="{name:'authors'}" class="inline-flex items-center px-2 h-full transition-colors hover:bg-purple-200 dark:hover:bg-purple-700">
