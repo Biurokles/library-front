@@ -4,4 +4,6 @@ export default{
     booksByLetter: [],
     booksByAuthor: [],
     roles: [],
+
+    usersData: [],
 }

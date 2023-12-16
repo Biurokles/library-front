@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
+import store from '../store';
 import Home from '../views/Home.vue'
 import DefaultLayout from '../components/DefaultLayout.vue'
 import Login from '../views/Login.vue'
@@ -9,6 +10,7 @@ import BooksByCategories from '../views/BooksByCategories.vue'
 import BooksByName from '../views/BooksByName.vue' 
 import BookDetails from '../views/BookDetails.vue'
 import ShoppingCart from '../views/ShoppingCart.vue'
+import AdminPanel from '../views/AdminPanel.vue'
 
 
 
@@ -46,7 +48,17 @@ const routes = [
                 path: '/book/:id',
                 name: 'bookDetails',
                 component: BookDetails,
-            }
+            },
+            {
+                path: '/adminPanel',
+                name: 'adminPanel',
+                component: AdminPanel,
+                beforeEnter: (to, from, next) => {
+                    store.getters.getIsUserInRole('Admin')
+                    ? next()
+                    : next({ name: 'login' });
+                }
+            },
         ]
     },
     {
