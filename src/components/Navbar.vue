@@ -11,6 +11,9 @@
       <router-link :to="{name:'shoppingcart'}" class="inline-flex items-center px-2 h-full transition-colors hover:bg-purple-200 dark:hover:bg-purple-700">
         <i class="pi pi-shopping-cart pr-2"></i>Shopping cart
       </router-link>
+      <router-link :to="{name:'booksBorrowed'}" class="inline-flex items-center px-2 h-full transition-colors hover:bg-purple-200 dark:hover:bg-purple-700">
+        <i class="pi pi-book"></i>Borrowed Books
+      </router-link>
       <router-link :to="{name:'byName'}" class="inline-flex items-center px-2 h-full transition-colors hover:bg-purple-200 dark:hover:bg-purple-700">
         <i class="pi pi-search pr-2"></i>Search Books
       </router-link>
@@ -20,12 +23,15 @@
       <router-link :to="{name:'authors'}" class="inline-flex items-center px-2 h-full transition-colors hover:bg-purple-200 dark:hover:bg-purple-700">
         Authors
       </router-link>
-      <router-link :to="{name:'login'}" class="inline-flex items-center px-2 h-full transition-colors hover:bg-purple-200 dark:hover:bg-purple-700">
-        Sign in
-      </router-link>
-      <router-link :to="{name:'register'}" class="inline-flex items-center px-2 h-full transition-colors hover:bg-purple-200 dark:hover:bg-purple-700">
-        Sign up
-      </router-link>
+      <router-link v-if="!isLogged"  :to="{name:'login'}" class="inline-flex items-center px-2 h-full transition-colors hover:bg-purple-200 dark:hover:bg-purple-700">
+      Sign in
+    </router-link>
+    <router-link v-if="!isLogged"  :to="{name:'register'}" class="inline-flex items-center px-2 h-full transition-colors hover:bg-purple-200 dark:hover:bg-purple-700">
+      Sign up
+    </router-link>
+    <router-link v-if="isLogged"  :to="{name:'home'}" v-on:click="logout()" class="inline-flex items-center px-2 h-full transition-colors hover:bg-purple-200 dark:hover:bg-purple-700">
+      Logout
+    </router-link>
     </div>
   </header>
 </template>

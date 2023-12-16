@@ -28,4 +28,5 @@
     {
         authors.value = data;
     });
+    })
 </script>

@@ -62,9 +62,6 @@
                               </div>
                           </div>
                           <div class="flex w-full justify-center items-center md:justify-start md:items-start">
-                              <button class="mt-6 md:mt-0 dark:border-white dark:hover:bg-gray-900 dark:bg-transparent dark:text-white py-5 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 border border-gray-800 font-medium w-96 2xl:w-full text-base font-medium leading-4 text-gray-800">Edit Details</button>
-                          </div>
-                          <div class="flex w-full justify-center items-center md:justify-start md:items-start">
                               <button v-on:click="borrowRequest" class="mt-6 md:mt-0 dark:border-white dark:hover:bg-gray-900 dark:bg-transparent dark:text-white py-5 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 border border-gray-800 font-medium w-96 2xl:w-full text-base font-medium leading-4 text-gray-800">Borrow books</button>
                           </div>
                       </div>
@@ -77,6 +74,7 @@
 <script >
     import { toast } from 'vue3-toastify';
     import 'vue3-toastify/dist/index.css';
+import store from '../store';
 
     export default {
         data() {
@@ -86,6 +84,13 @@
             };
         },
         methods: {
+            borrowRequest(){
+                var cart = JSON.parse(localStorage.getItem('products')) || [];
+                for(let a in cart){
+                    store.dispatch('addBookToBasket', cart[a].id)
+                }
+                // store.dispatch('borrowBasket')
+            },
             deleteFromCart(item)
             {
                 var cart = JSON.parse(localStorage.getItem('products')) || [];

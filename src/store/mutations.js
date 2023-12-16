@@ -33,3 +33,6 @@ export function logout(state)
     localStorage.removeItem('token');
     state.roles = [];
 }
+export function setBorrowedBooks(state, books){
+    state.borrowedBooks = books
+}

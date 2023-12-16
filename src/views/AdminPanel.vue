@@ -4,6 +4,7 @@
             <li v-for="item in usersData" :key="item.id">{{ JSON.stringify(item) }}</li>
         </ul>
     </div>
+
     <Footer></Footer>
 </template>
 <script setup>
@@ -15,8 +16,10 @@ import Footer from "../components/Footer.vue";
 let subs = [];
 const usersData = reactive([]);
 
+
 onMounted(()=>{
     store.dispatch('getUsersData');
+    store.dispatch
 
     subs.push(
         store.subscribe((mutation, state) => {
