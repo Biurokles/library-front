@@ -12,6 +12,7 @@ import BooksByName from '../views/BooksByName.vue'
 import BookDetails from '../views/BookDetails.vue'
 import ShoppingCart from '../views/ShoppingCart.vue'
 import AdminPanel from '../views/AdminPanel.vue'
+import EmployeePanel from '../views/EmployeePanel.vue'
 
 
 
@@ -66,6 +67,16 @@ const routes = [
                 component: AdminPanel,
                 beforeEnter: (to, from, next) => {
                     store.getters.getIsUserInRole('Admin')
+                    ? next()
+                    : next({ name: 'login' });
+                }
+            },
+            {
+                path: '/employeePanel',
+                name: 'employeePanel',
+                component: EmployeePanel,
+                beforeEnter: (to, from, next) => {
+                    store.getters.getIsUserInRole('Employee')
                     ? next()
                     : next({ name: 'login' });
                 }
