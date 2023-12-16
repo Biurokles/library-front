@@ -3,40 +3,39 @@
     <router-link :to="{name:'home'}" class="inline-flex items-center h-full px-5">
       Home
     </router-link>
-
-  <div class="flex items-center gap-1 dark:text-white">
-    <button @click="toggleDark()" class="bg-white text-black font-bold py-2 px-4 rounded  dark:bg-gray-700 dark:text-white">
-      <i :class="isDark?'pi pi-moon':'pi pi-sun'"></i>
-      {{ isDark? "Dark":"Light" }} Mode
-    </button>
-    <router-link :to="{name:'shoppingcart'}" class="inline-flex items-center px-2 h-full transition-colors hover:bg-purple-200 dark:hover:bg-purple-700">
-
-<i class="pi pi-shopping-cart pr-2"></i>Shopping cart
-</router-link>
-    <router-link v-if="store.getters.getIsUserInRole('Admin')" :to="{name:'adminPanel'}" class="inline-flex items-center px-2 h-full transition-colors hover:bg-purple-200 dark:hover:bg-purple-700">
-      Admin Panel
-    </router-link>
-    <router-link :to="{name:'byName'}" class="inline-flex items-center px-2 h-full transition-colors hover:bg-purple-200 dark:hover:bg-purple-700">
-      <i class="pi pi-search pr-2"></i>Search Books
-    </router-link>
-    <router-link :to="{name:'byCategory'}" class="inline-flex items-center px-2 h-full transition-colors hover:bg-purple-200 dark:hover:bg-purple-700">
-      Book by Category
-    </router-link>
-    <router-link :to="{name:'authors'}" class="inline-flex items-center px-2 h-full transition-colors hover:bg-purple-200 dark:hover:bg-purple-700">
-      Authors
-    </router-link>
-    
-    <router-link v-if="!isLogged"  :to="{name:'login'}" class="inline-flex items-center px-2 h-full transition-colors hover:bg-purple-200 dark:hover:bg-purple-700">
-      Sign in
-    </router-link>
-    <router-link v-if="!isLogged"  :to="{name:'register'}" class="inline-flex items-center px-2 h-full transition-colors hover:bg-purple-200 dark:hover:bg-purple-700">
-      Sign up
-    </router-link>
-    <router-link v-if="isLogged"  :to="{name:'home'}" v-on:click="logout()" class="inline-flex items-center px-2 h-full transition-colors hover:bg-purple-200 dark:hover:bg-purple-700">
-      Logout
-    </router-link>
-  </div>
-</header>
+    <div class="flex items-center gap-1 dark:text-white">
+      <button @click="toggleDark()" class="bg-white text-black font-bold py-2 px-4 rounded  dark:bg-gray-700 dark:text-white">
+        <i :class="isDark?'pi pi-moon':'pi pi-sun'"></i>
+        {{ isDark? "Dark":"Light" }} Mode
+      </button>
+      <router-link :to="{name:'shoppingcart'}" class="inline-flex items-center px-2 h-full transition-colors hover:bg-purple-200 dark:hover:bg-purple-700">
+        <i class="pi pi-shopping-cart pr-2"></i>Shopping cart
+      </router-link>
+      <router-link v-if="store.getters.getIsUserInRole('Admin')" :to="{name:'adminPanel'}" class="inline-flex items-center px-2 h-full transition-colors hover:bg-purple-200 dark:hover:bg-purple-700">
+        Admin Panel
+      </router-link>
+      <router-link :to="{name:'byName'}" class="inline-flex items-center px-2 h-full transition-colors hover:bg-purple-200 dark:hover:bg-purple-700">
+        <i class="pi pi-search pr-2"></i>Search Books
+      </router-link>
+      <router-link :to="{name:'categories'}" class="inline-flex items-center px-2 h-full transition-colors hover:bg-purple-200 dark:hover:bg-purple-700">
+        <i class="pi pi-server pr-2"></i>
+        Book by Category
+      </router-link>
+      <router-link :to="{name:'authors'}" class="inline-flex items-center px-2 h-full transition-colors hover:bg-purple-200 dark:hover:bg-purple-700">
+        <i class="pi pi-user pr-2"></i>
+        Authors
+      </router-link>
+      <router-link v-if="!isLogged"  :to="{name:'login'}" class="inline-flex items-center px-2 h-full transition-colors hover:bg-purple-200 dark:hover:bg-purple-700">
+        Sign in
+      </router-link>
+      <router-link v-if="!isLogged"  :to="{name:'register'}" class="inline-flex items-center px-2 h-full transition-colors hover:bg-purple-200 dark:hover:bg-purple-700">
+        Sign up
+      </router-link>
+      <router-link v-if="isLogged"  :to="{name:'home'}" v-on:click="logout()" class="inline-flex items-center px-2 h-full transition-colors hover:bg-purple-200 dark:hover:bg-purple-700">
+        Logout
+      </router-link>
+    </div>
+  </header>
 </template>
 
 <script setup> 
