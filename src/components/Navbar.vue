@@ -11,6 +11,9 @@
       <router-link :to="{name:'shoppingcart'}" class="inline-flex items-center px-2 h-full transition-colors hover:bg-purple-200 dark:hover:bg-purple-700">
         <i class="pi pi-shopping-cart pr-2"></i>Shopping cart
       </router-link>
+      <router-link v-if="store.getters.getIsUserInRole('Admin')" :to="{name:'adminPanel'}" class="inline-flex items-center px-2 h-full transition-colors hover:bg-purple-200 dark:hover:bg-purple-700">
+        Admin Panel
+      </router-link>
       <router-link :to="{name:'byName'}" class="inline-flex items-center px-2 h-full transition-colors hover:bg-purple-200 dark:hover:bg-purple-700">
         <i class="pi pi-search pr-2"></i>Search Books
       </router-link>
@@ -36,8 +39,9 @@
 </template>
 
 <script setup> 
-  import {useDark, useToggle} from "@vueuse/core";
-  import 'primeicons/primeicons.css';
+import {useDark, useToggle} from "@vueuse/core";
+import 'primeicons/primeicons.css';
+import store from "../store";
 
   const isDark = useDark();
   const toggleDark = useToggle(isDark);
