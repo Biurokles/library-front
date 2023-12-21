@@ -10,7 +10,7 @@
                       <p class="text-lg md:text-xl dark:text-white font-semibold leading-6 xl:leading-5 text-gray-800">Customer’s Cart</p>
                           <div v-for="book in products" :key="book.id" class="mt-4 md:mt-6 flex flex-col md:flex-row justify-start items-start md:items-center md:space-x-6 xl:space-x-8 w-full">
                           <div class="pb-4 md:pb-8 w-full md:w-40">
-                              <img class="w-full hidden md:block" :src="book.coverUrl.slice(5)" :alt="book.title"  />
+                              <img class="w-full hidden md:block" :src="'https://localhost:5001' + book.coverUrl" :alt="book.title"  />
                           </div>
                           <div class="border-b border-gray-200 md:flex-row flex-col flex justify-between items-start w-full pb-8 space-y-4 md:space-y-0">
                               <div class="w-full flex flex-col justify-start items-start space-y-8">
@@ -87,7 +87,6 @@
     methods: {
         borrowRequest()
         {
-        console.log('nigger');
         },
         deleteFromCart(item)
         {

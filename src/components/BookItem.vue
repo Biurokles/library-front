@@ -2,7 +2,7 @@
   <div  class="bg-white shadow rounded-xl transition-all hover:scale-105 " >
     <router-link :to="{name: 'bookDetails', params: {id: book.id}}">
       <img 
-        :src="book.coverUrl.slice(5)" 
+        :src="'https://localhost:5001' + book.coverUrl" 
         :alt="book.title" 
         class="rounded-t-xl w-full h-48 object-cover">
     </router-link>
