@@ -1,6 +1,6 @@
 <template>
     <div class="grid grid-cols-1 md:grid-cols-3 gap-5 p-8" >
-        <BookItem  v-for="book in books" v-bind:key="book.idMeal" v-bind:book="book"/>
+        <BookItem  v-for="book in books" v-bind:key="book.id" v-bind:book="book"/>
     </div>
     <div v-if="!books.length" class="dark:text-white flex justify-center text-gray-600 ">
         There are no books

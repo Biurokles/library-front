@@ -59,6 +59,7 @@ const routes = [
                 path: '/book/:id',
                 name: 'bookDetails',
                 component: BookDetails,
+                props: true
             },
             {
                 path: '/adminPanel',
