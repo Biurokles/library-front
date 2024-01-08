@@ -1,3 +1,4 @@
+import axios from "axios";
 import axiosClient from "../axiosClient";
 import store from "../store"
 
@@ -63,9 +64,21 @@ export function changeUserRole({commit}, {isGrant, usersId, role}){
         .then(({data}) => store.dispatch('getUsersData')
         )
     : axiosClient.delete(`admin/userRoles`, {data: {usersId, role}})
-    .then(({data}) => store.dispatch('getUsersData')
+        .then(({data}) => store.dispatch('getUsersData')
     )
 }
+
+
+export function verifyUser({commit}, usersId){
+    axiosClient.post('employee/verifyUser', {usersId})
+        .then(({data}) => store.dispatch('getUsersData'));
+}
+
+export function returnBook({commit}, borrowingsId){
+    axiosClient.post('borrowing/returnBook', [borrowingsId])
+        .then(({data}) => store.dispatch('getUsersData'));
+}
+
 
 
 
