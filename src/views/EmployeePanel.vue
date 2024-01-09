@@ -12,12 +12,12 @@
                 <div class="col-span-3">{{ item.email }}</div>
                 <div class="col-span-1">
                     <label class="switch">
-                        <input type="checkbox" v-bind:disabled="item.isVerified" v-bind:checked="item.isVerified" v-on:change="verifyUser(id)">
+                        <input type="checkbox" v-bind:disabled="item.isVerified" v-bind:checked="item.isVerified" v-on:change="verifyUser(item.id)">
                         <span class="slider round"></span>
                     </label>
                 </div>
                 <div class="col-span-7 grid grid-cols-12">
-                    <div class="col-span-12 grid grid-cols-12 p-1" v-for="borrowing in item.unreturnedBorrowings">
+                    <div class="col-span-12 grid grid-cols-12 p-1" v-for="borrowing in item.unreturnedBorrowings" v-bind:key="borrowing">
                         <div class="col-span-10">
                             {{borrowing.booksTitle}}<br> {{ borrowing.booksAuthors.join(', ') }}<br>Borrowed at: {{ new Date(borrowing.borrowedAt).toLocaleString()}}
                         </div>
@@ -44,11 +44,12 @@ import store from '../store'
 
 let subs = [];
 const usersData = reactive([]);
-
+console.log(usersData)
 const rolesArr = Object.values(Roles);
 const rolesLen = rolesArr.length;
 
 const verifyUser = (usersId) => {
+    console.log(usersId)
     store.dispatch('verifyUser', usersId)
 }
 

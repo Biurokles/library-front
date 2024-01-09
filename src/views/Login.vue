@@ -84,7 +84,6 @@
             if(tk){
               localStorage.setItem('token',repsonse.data['token']);
               store.commit('setUserRoles', tk);
-              alert("Succesfull login!");
               this.$router.push({path: '/'})  
               return true;
             }else{

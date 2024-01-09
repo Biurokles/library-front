@@ -58,7 +58,7 @@ export function getUsersData({commit}){
 }
 
 
-export function changeUserRole({commit}, {isGrant, usersId, role}){
+export function changxeUserRole({commit}, {isGrant, usersId, role}){
     isGrant
     ? axiosClient.post(`admin/userRoles`, {usersId, role})
         .then(({data}) => store.dispatch('getUsersData')
@@ -70,7 +70,7 @@ export function changeUserRole({commit}, {isGrant, usersId, role}){
 
 
 export function verifyUser({commit}, usersId){
-    axiosClient.post('employee/verifyUser', {usersId})
+    axiosClient.post(`employee/verifyUser?usersId=${usersId}`)
         .then(({data}) => store.dispatch('getUsersData'));
 }
 

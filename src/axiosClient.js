@@ -18,7 +18,6 @@ const axiosClient = axios.create({
 
     return response;
 }, function (error) {
-  debugger;
     return Promise.reject(error);
 });
 
