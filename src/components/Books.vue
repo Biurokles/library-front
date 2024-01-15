@@ -10,7 +10,12 @@
 <script setup>
 
     import BookItem from './BookItem.vue';
-
+    import store from '../store'
+    if(localStorage.getItem('token'))
+    {
+        store.dispatch('getBorrowings')
+        store.dispatch('getBasketBooks');
+    }
     const {books} = defineProps({
         books: {
             required:true,

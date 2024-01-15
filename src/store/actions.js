@@ -79,6 +79,43 @@ export function returnBook({commit}, borrowingsId){
         .then(({data}) => store.dispatch('getUsersData'));
 }
 
+export async function getBasketBooks({ commit }) {
+    await axiosClient.get(`basket`)
+        .then(({ data }) => {
+            commit('setBasketBooks', data);
+        })
+        .catch(error => {
+            console.error("Error fetching basket books:", error);
+        });
+}
 
+export function addBookToBasket({ commit }, id) {
+    const headers = {
+        'Accept': 'text/plain',
+        'Content-Type': 'application/json',
+      };
+    axiosClient.post(`basket`,id,{ headers })
+        .catch(error => {
+            console.error("Error adding book to basket:", error);
+        });
+        store.dispatch('getBasketBooks');
+}
 
+export function deleteBookFromBasket({ commit }, id) {
+    const headers = {
+        'Accept': 'text/plain',
+        'Content-Type': 'application/json',
+      };
+    axiosClient.delete(`basket`,id,{ headers })
+        .catch(error => {
+            console.error("Error deleting book from basket:", error);
+        });
+        store.dispatch('getBasketBooks');
+}
 
+export function getBorrowings({commit}){
+    axiosClient.post(`borrowing/getBorrowings`)
+    .then(({data})=>{
+        commit('setBorrowings', data)
+    })
+}

@@ -3,40 +3,35 @@
           <div class="flex justify-start item-start space-y-2 flex-col">
               <h1 class="text-3xl dark:text-white lg:text-4xl font-semibold leading-7 lg:leading-9 text-gray-800">Borrowed Books</h1>
           </div> 
-          <Books :books="books"></Books>
-          <Footer></Footer>
-      </div>
+    </div>
+    <div v-for="book in books" v-bind:key="book" v-bind:book="book">
+            <h1 class="text-5xl font-bold mb-5">{{ book.booksTitle}}</h1>
+            <div class="grid grid-cols-1 sm:grid-cols-4 text-lg py-2">
+            <div>
+                <strong class="font-bold"> ISBN Number:</strong> {{ book.booksISBN }}
+            </div>
+            <div>
+                <strong class="font-bold"> Authors:</strong><div v-for="author in book.booksAuthors" v-bind:key="author">
+                {{ author }}</div>
+            </div>
+            <div>
+                <strong class="font-bold"> Borrowed:</strong> {{ book.borrowedAt}}
+            </div>
+        </div>    
+    </div>
+    <div v-if="!books.length" class="dark:text-white flex justify-center text-gray-600 ">
+        Borrow some book to check on them
+    </div>
 </template>
 
 
 <script setup>
 import {computed} from '@vue/reactivity'
-import{onMounted, ref} from 'vue';
-import {useRoute} from 'vue-router';
+import{onMounted} from 'vue';
 import store from "../store";
-const route = useRoute();
- 
-// there is none get for borrowedList/Books abythink
+const books = computed(()=> store.state.borrowings.borrowings.filter((word)=>word.returnedAt==null))
+onMounted(()=>{
+    store.dispatch('getBorrowings');
+})
 
-// const books = computed(() => store.state.searchedBooks)
-// const keyword = ref('');
-// const searchBy = ref('');
-// function searchBooks(){
-//     if(!searchBy.value)
-//     searchBy.value = "Title";
-//     if(keyword.value){
-//         const searchInfo = {keyword:keyword.value, searchBy:searchBy.value}
-//         store.dispatch('searchBooks',searchInfo);
-//     }
-//     else{
-//         store.commit("setSearchedBooks",[]);
-//     }
-
-// }
-// onMounted(()=>{
-//     keyword.value = route.params.name
-//     if(keyword.value){
-//         searchBooks();
-//     }
-// })
 </script>

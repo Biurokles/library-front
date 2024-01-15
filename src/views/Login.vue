@@ -67,7 +67,8 @@
     data() {
       return {
         email:'',
-        password:''
+        password:'',
+        data: []
       }; 
     },
     methods:{
@@ -77,14 +78,15 @@
             email:  this.email,
             password: this.password
           }
-          // console.log(user_data)
           axiosClient.post('auth/login', user_data)
-          .then(repsonse => {
+          .then(async repsonse => {
             let tk = repsonse.data['token'];
             if(tk){
               localStorage.setItem('token',repsonse.data['token']);
+              await this.integratebooks()
               store.commit('setUserRoles', tk);
-              this.$router.push({path: '/'})  
+              this.$router.push({path: '/'})
+              store.dispatch('getBorrowings');
               return true;
             }else{
               alert("Incorrect login details");
@@ -96,7 +98,35 @@
           })
         }
         return false;
+      },
+      async integratebooks()
+    {
+      var products = JSON.parse(localStorage.getItem('products'));
+      let response = await axiosClient.post(`borrowing/getBorrowings`)
+      this.data =   response.data.borrowings;
+      if(products!=[])
+      {
+      products.forEach(element => {
+        const found = JSON.stringify(this.data.findLast(x=>x.booksId==element.id))
+        console.log(found + 'znalezione')
+        if(found.returnedAt!=null)
+        {
+          store.dispatch('addBookToBasket',found.booksId)
+        }
+      });   
+      let basket = await axiosClient.get(`basket`)
+      this.data = basket.data
+      console.log(this.data)
+      products = []
+      this.data.forEach(element => {
+        console.log('push')
+        products.push(element);
+      });
+      console.log(products + 'produkty')
+      localStorage.setItem('products',JSON.stringify(products))
       }
     }
+    },
+
   }
 </script>

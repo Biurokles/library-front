@@ -13,6 +13,8 @@ import BookDetails from '../views/BookDetails.vue'
 import ShoppingCart from '../views/ShoppingCart.vue'
 import AdminPanel from '../views/AdminPanel.vue'
 import EmployeePanel from '../views/EmployeePanel.vue'
+import BorrowedBooks from '../views/BorrowedBooks.vue'
+
 
 
 
@@ -81,6 +83,11 @@ const routes = [
                     ? next()
                     : next({ name: 'login' });
                 }
+            },
+            {
+                path: '/borrowedBooks',
+                name: 'borrowedBooks',
+                component: BorrowedBooks
             },
         ]
     },

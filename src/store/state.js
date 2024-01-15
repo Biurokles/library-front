@@ -7,4 +7,6 @@ export default{
     roles: [],
     NewsBooks: [],
     usersData: [],
+    basketBooks: [],
+    borrowings: [],
 }

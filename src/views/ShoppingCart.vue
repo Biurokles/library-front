@@ -1,8 +1,8 @@
 <template>
     <div class="py-14 px-4 md:px-6 2xl:px-20 2xl:container 2xl:mx-auto">
+        {{ wishlist }}
           <div class="flex justify-start item-start space-y-2 flex-col">
               <h1 class="text-3xl dark:text-white lg:text-4xl font-semibold leading-7 lg:leading-9 text-gray-800">Shopping cart</h1>
-              <p class="text-base dark:text-gray-300 font-medium leading-6 text-gray-600">{{ today }}</p>
           </div> 
           <div class="mt-10 flex flex-col xl:flex-row jusitfy-center items-stretch w-full xl:space-x-8 space-y-4 md:space-y-6 xl:space-y-0">
               <div class="flex flex-col justify-start items-start w-full space-y-4 md:space-y-6 xl:space-y-8">
@@ -42,41 +42,52 @@
 <script >
   import { toast } from 'vue3-toastify';
   import 'vue3-toastify/dist/index.css';
+  import store from '../store'
+  import axiosClient from "../axiosClient";
   export default {
     data() {
         return {
-        products: this.checkbooks(),
-        today: this.day()
+        products: JSON.parse(localStorage.getItem('products')),
+        logged: localStorage.getItem('token')===null,
+        wishlist:this.products?Array.from((this.products.filter((x)=> x.quantity= 0)),(x)=>x.id):[],
         };
     },
     methods: {
-        checkbooks()
-        {
-            if(localStorage.setItem('token'));
-            return JSON.parse(localStorage.getItem('products'));
-        },
         borrowRequest()
         {
-        console.log('nigger');
+            if(!this.products)
+            {
+                toast.info('you need to have books in basket to borrow them');
+            }
+            else{
+                if(localStorage.getItem('token')===null)
+                {
+                    window.location.href = 'login';
+                }
+                else{
+                    if(!this.wishlist==[])
+                    {
+                        store.dispatch('deleteBookFromBasket',this.wishlist);
+                    }
+                    axiosClient.post('borrowing/borrowBasket');
+                    this.wishlist.forEach(element => {
+                        store.dispatch('addBookToBasket',element);
+                    });
+                    localStorage.setItem('products', JSON.parse(this.wishlist));
+                }
+            }
+          
         },
         deleteFromCart(item)
         {
         var cart = JSON.parse(localStorage.getItem('products')) || [];
         var index = cart.findIndex(x => x.title === item.title);
         cart.splice(index, 1);
-        localStorage.setItem('products', JSON.stringify(cart));
+        localStorage.setItem('products', JSON.parse(cart));
         this.products = JSON.parse(localStorage.getItem('products'));
-        console.log(localStorage.products)
+        store.dispatch('deleteBookFromBasket',item.id)
         toast.info(item.title + ' deleted from cart');
         },
-        day()
-        {
-            var today = new Date();
-            var dd = String(today.getDate()).padStart(2, '0');
-            var mm = String(today.getMonth() + 1).padStart(2, '0'); 
-            var yyyy = today.getFullYear();
-            today = mm + '/' + dd + '/' + yyyy;
-        }
     }
   }
 </script>

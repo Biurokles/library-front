@@ -9,6 +9,7 @@
 </template>
 
 <script setup>
+    import Footer from '../components/Footer.vue';
     import {computed} from '@vue/reactivity'
     import {onMounted, ref } from "vue";
     import { useRoute } from "vue-router";
@@ -16,7 +17,7 @@
     import Books from '../components/Books.vue'
     const bok = computed(()=> store.state.NewsBooks)
     onMounted(()=>{
-        store.dispatch('searchNewsBooks' );
+        store.dispatch('searchNewsBooks');
     })
 
 

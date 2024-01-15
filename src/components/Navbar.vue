@@ -1,6 +1,7 @@
 <template>
   <header class="bg-white dark:text-white dark:bg-gray-700  text-black shadow h-24 flex justify-between items-stretch">
     <router-link :to="{name:'home'}" class="inline-flex items-center h-full px-5">
+      <i class="pi pi-home pr-2"></i>
       Home
     </router-link>
     <div class="flex items-center gap-1 dark:text-white">
@@ -11,10 +12,16 @@
       <router-link :to="{name:'shoppingcart'}" class="inline-flex items-center px-2 h-full transition-colors hover:bg-purple-200 dark:hover:bg-purple-700">
         <i class="pi pi-shopping-cart pr-2"></i>Shopping cart
       </router-link>
+      <router-link v-if="isLogged" v-on:click="borrowedBooks()" :to="{name:'borrowedBooks'}"  class="inline-flex items-center px-2 h-full transition-colors hover:bg-purple-200 dark:hover:bg-purple-700">
+        <i class="pi pi-book pr-2"></i>
+        Borrowed Books
+      </router-link>
       <router-link v-if="store.getters.getIsUserInRole('Employee')" :to="{name:'employeePanel'}" class="inline-flex items-center px-2 h-full transition-colors hover:bg-purple-200 dark:hover:bg-purple-700">
+        <i class="pi pi-user-plus pr-2"></i>
         Employee Panel
       </router-link>
       <router-link v-if="store.getters.getIsUserInRole('Admin')" :to="{name:'adminPanel'}" class="inline-flex items-center px-2 h-full transition-colors hover:bg-purple-200 dark:hover:bg-purple-700">
+        <i class="pi pi-prime pr-2"></i>
         Admin Panel
       </router-link>
       <router-link :to="{name:'byName'}" class="inline-flex items-center px-2 h-full transition-colors hover:bg-purple-200 dark:hover:bg-purple-700">
@@ -29,14 +36,18 @@
         Authors
       </router-link>
       <router-link v-if="!isLogged"  :to="{name:'login'}" class="inline-flex items-center px-2 h-full transition-colors hover:bg-purple-200 dark:hover:bg-purple-700">
+        <i class="pi pi-sign-in pr-2"></i>
         Sign in
       </router-link>
       <router-link v-if="!isLogged"  :to="{name:'register'}" class="inline-flex items-center px-2 h-full transition-colors hover:bg-purple-200 dark:hover:bg-purple-700">
-        Sign up
+        <i class="pi pi-plus pr-2"></i>
+        Sign up 
       </router-link>
       <router-link v-if="isLogged"  :to="{name:'home'}" v-on:click="logout()" class="inline-flex items-center px-2 h-full transition-colors hover:bg-purple-200 dark:hover:bg-purple-700">
+        <i class="pi pi-sign-out pr-2"></i>
         Logout
       </router-link>
+
     </div>
   </header>
 </template>
@@ -54,4 +65,8 @@ import store from "../store";
     localStorage.removeItem('token');
     location.reload();
   }
+  const borrowedBooks = function()
+    {
+      store.dispatch('getBorrowings');
+    }
 </script>
